@@ -7,7 +7,7 @@
 class Main {
 
     /** Performs various mathematical operations, using calls to the Math class methods. */
-    function void main() {
+    function void main2() {
         var Array r;          // stores the test results;
         
         let r = 8000;
@@ -32,4 +32,10 @@ class Main {
         
         return;
     }
+
+		function void main(){
+			//do Output.printInt(Math.getBitCount(19));
+			do Output.printInt(Math.getBitCount(999));
+			return;
+		}
 }
