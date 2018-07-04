@@ -35,7 +35,7 @@ class Main {
 
 		function void main(){
 			//do Output.printInt(Math.getBitCount(19));
-			do Output.printInt(Math.getBitCount(999));
+			do Output.printInt(Math.multiply(3, 3));
 			return;
 		}
 }
