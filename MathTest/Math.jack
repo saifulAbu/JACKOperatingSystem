@@ -28,8 +28,12 @@ class Math {
 
     /** Returns the absolute value of x. */
     function int abs(int x) {
-   		//todo
-			return 0;
+   		var int res;
+			let res = x;
+			if(x < 0){
+				let res = Math.multiply(res, -1);
+			}
+			return res;
 	  }
 
     /** Returns the product of x and y. 
@@ -38,7 +42,6 @@ class Math {
      *  the Jack expressions x*y and multiply(x,y) return the same value.
      */
     function int multiply(int x, int y) {
-    	//todo
 			var int shiftedX, result, n, i;
 			let shiftedX = x;
 			let result = 0;
