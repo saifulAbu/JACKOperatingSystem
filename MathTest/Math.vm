@@ -156,9 +156,31 @@ return
 function Math.sqrt 0
 push constant 0
 return
-function Math.max 0
-push constant 0
+function Math.max 1
+push argument 0
+pop local 0
+push argument 1
+push argument 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+pop local 0
+label IF_FALSE0
+push local 0
 return
-function Math.min 0
-push constant 0
+function Math.min 1
+push argument 0
+pop local 0
+push argument 1
+push argument 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+pop local 0
+label IF_FALSE0
+push local 0
 return

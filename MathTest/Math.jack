@@ -100,13 +100,21 @@ class Math {
 
     /** Returns the greater number. */
     function int max(int a, int b) {
-    	//tod
-			return 0;
+    	var int res;
+			let res = a;
+			if(b > a){
+				let res = b;
+			}
+			return res;
 		}
 
     /** Returns the smaller number. */
     function int min(int a, int b) {
-    	//todo
-			return 0;
+    	var int res;
+			let res = a;
+			if(b < a){
+				let res = b;
+			}
+			return res;
 		}
 }
