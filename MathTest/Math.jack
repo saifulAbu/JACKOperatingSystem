@@ -88,8 +88,15 @@ class Math {
      *  the Jack expressions x/y and divide(x,y) return the same value.
      */
     function int divide(int x, int y) {
-    	//todo
-			return 0;
+    	var int q;
+			if(y > x){
+				return 0;
+			}
+			let q = Math.divide(x, (y + y));
+			if((x - Math.multiply(Math.multiply(q, y), 2)) < y){
+				return Math.multiply(2, q);
+			}
+			return (Math.multiply(2, q) + 1);
 		}
 
     /** Returns the integer part of the square root of x. */

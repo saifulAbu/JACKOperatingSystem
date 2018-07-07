@@ -37,9 +37,9 @@ class Main {
 			//do Output.printInt(Math.getBitCount(19));
 			do Output.printInt(Math.multiply(-14, 0));
 			do Output.println();
-			do Output.printInt(Math.min(1, 100));
+			do Output.printInt(Math.divide(10, 1000));
 			do Output.println();
-			do Output.printInt(Math.min(100, 1));
+			do Output.printInt(Math.divide(10010, 11));
 			do Output.println();
 			do Output.printInt(Math.sqrt(9));
 			return;
