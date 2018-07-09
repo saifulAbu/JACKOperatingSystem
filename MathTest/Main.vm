@@ -161,31 +161,11 @@ pop that 0
 push constant 0
 return
 function Main.main 0
-push constant 14
-neg
-push constant 0
-call Math.multiply 2
-call Output.printInt 1
-pop temp 0
-call Output.println 0
-pop temp 0
-push constant 10
-push constant 1000
-call Math.divide 2
-call Output.printInt 1
-pop temp 0
-call Output.println 0
-pop temp 0
-push constant 10010
-push constant 11
-call Math.divide 2
-call Output.printInt 1
-pop temp 0
-call Output.println 0
-pop temp 0
-push constant 9
+push constant 16
 call Math.sqrt 1
 call Output.printInt 1
+pop temp 0
+call Output.println 0
 pop temp 0
 push constant 0
 return

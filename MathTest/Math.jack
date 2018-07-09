@@ -108,7 +108,20 @@ class Math {
 			//for j = n/2 -1 ... 0 do
 			//  if (y + 2^ j) ^ 2 <= x then y = y + 2 ^ j
 			//return y
-			return 0;
+			var int n, y, j, t;
+			
+			let n = Math.getBitCount(x);
+			let y = 0;
+			let j = Math.divideBy2thenCeil(n) - 1;
+			while(j > -1){
+				let t = Math.multiply((y + powerOf2[j]), (y + powerOf2[j]));
+				if((t < x) | (t = x)){
+					let y = y + powerOf2[j];
+				}
+				let j = j - 1;
+			}
+			
+			return y;
 		}
 
     /** Returns the greater number. */
@@ -129,5 +142,14 @@ class Math {
 				let res = b;
 			}
 			return res;
+		}
+
+		function int divideBy2thenCeil(int x){
+			var int t;
+			let t = Math.divide(x, 2);
+			if((t + t) < x){
+				return t + 1;
+			}
+			return t;
 		}
 }
