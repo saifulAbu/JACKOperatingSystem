@@ -1,4 +1,4 @@
-function Main.main2 1
+function Main.main 1
 push constant 8000
 pop local 0
 push constant 0
@@ -160,9 +160,11 @@ push temp 0
 pop that 0
 push constant 0
 return
-function Main.main 0
-push constant 16
-push constant 2
+function Main.main2 0
+push constant 12
+neg
+push constant 1
+neg
 call Math.divide 2
 call Output.printInt 1
 pop temp 0

@@ -7,7 +7,7 @@
 class Main {
 
     /** Performs various mathematical operations, using calls to the Math class methods. */
-    function void main2() {
+    function void main() {
         var Array r;          // stores the test results;
         
         let r = 8000;
@@ -29,13 +29,12 @@ class Main {
         let r[11] = Math.max(123, -345);   // 123
         let r[12] = Math.abs(27);          // 27
         let r[13] = Math.abs(-32767);      // 32767
-        
         return;
     }
 
-		function void main(){
+		function void main2(){
 			//do Output.printInt(Math.divide(12, 2));
-			do Output.printInt(Math.divide(16, 2));
+			do Output.printInt(Math.divide(-12, -1));
 			do Output.println();
 			//do Output.printString("Hello");
 			return;

@@ -87,12 +87,27 @@ class Math {
      *  program's code, it handles it by invoking this method. In other words,
      *  the Jack expressions x/y and divide(x,y) return the same value.
      */
-    function int divide(int x, int y) {
+		function int divide(int x, int y){
+			var int sign, result;
+			let sign = 1;
+			if(x < 0){
+				let sign = -1;
+				let x = Math.abs(x);
+			}
+			if(y < 0){
+				let sign = Math.multiply(sign, -1);
+				let y = Math.abs(y);
+			}
+			let result = Math.divideHelper(x, y);
+			return (Math.multiply(result, sign));
+		}
+
+    function int divideHelper(int x, int y) {
     	var int q;
 			if(y > x){
 				return 0;
 			}
-			let q = Math.divide(x, (y + y));
+			let q = Math.divideHelper(x, (y + y));
 			if((x - Math.multiply(Math.multiply(q, y), 2)) < y){
 				return Math.multiply(2, q);
 			}
