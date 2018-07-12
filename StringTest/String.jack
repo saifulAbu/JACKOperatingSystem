@@ -11,6 +11,8 @@
  * string-oriented operations.
  */
 class String {
+		field Array content;
+		field int length;
 
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
@@ -70,19 +72,16 @@ class String {
 
     /** Returns the new line character. */
     function char newLine() {
-    	//todo
-			return 0;
+			return 128;
 		}
 
     /** Returns the backspace character. */
     function char backSpace() {
-    	//todo
-			return 0;		
+			return 129;		
 		}
 
     /** Returns the double quote (") character. */
     function char doubleQuote() {
-    	//todo
-			return 0;
+			return 34;
 		}
 }
