@@ -7,7 +7,7 @@
 class Main {
 
     /** Performs various string manipulations and displays their results. */
-    function void main() {
+    function void main2() {
         var String s;
         var String i;
         
@@ -80,4 +80,13 @@ class Main {
 
         return;
     }
+
+		function void main(){
+				do Output.printInt(String.getDigitCount(123));
+				do Output.printInt(String.getDigitCount(1));
+				do Output.printInt(String.getDigitCount(0));
+				
+				
+				return;
+		}
 }

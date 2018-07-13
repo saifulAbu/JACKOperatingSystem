@@ -13,29 +13,34 @@
 class String {
 		field Array content;
 		field int length;
+		field int sign; 
 
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
     constructor String new(int maxLength) {
-    	//todo
+    	let content = Array.new(maxLength);
+			let length = maxLength;
+			let sign = 1;
 			return this;
 		}
 
     /** Disposes this string. */
     method void dispose() {
-    	//todo
+    	if(~(content = null)){
+				do content.dispose();
+			}
+			do Memory.deAlloc(this);
 			return;
 		}
 
     /** Returns the current length of this string. */
     method int length() {
-    	//todo
-			return 420;
+			return length;
 		}
 
     /** Returns the character at the j-th location of this string. */
     method char charAt(int j) {
-			//tod
+			//todo
 			return 420;
     }
 
@@ -83,5 +88,15 @@ class String {
     /** Returns the double quote (") character. */
     function char doubleQuote() {
 			return 34;
+		}
+
+		function int getDigitCount(int val){
+			var int result;
+			let result = 1;
+			while(val > 1){
+				let val = val / 10;
+				let result = result + 1;
+			}
+			return result;
 		}
 }

@@ -1,4 +1,4 @@
-function Main.main 2
+function Main.main2 2
 push constant 0
 call String.new 1
 pop local 0
@@ -464,6 +464,21 @@ call String.dispose 1
 pop temp 0
 push local 0
 call String.dispose 1
+pop temp 0
+push constant 0
+return
+function Main.main 0
+push constant 123
+call String.getDigitCount 1
+call Output.printInt 1
+pop temp 0
+push constant 1
+call String.getDigitCount 1
+call Output.printInt 1
+pop temp 0
+push constant 0
+call String.getDigitCount 1
+call Output.printInt 1
 pop temp 0
 push constant 0
 return
