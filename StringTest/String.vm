@@ -60,11 +60,10 @@ function String.charAt 0
 push argument 0
 pop pointer 0
 push argument 1
-push pointer 0
-call String.length 1
-gt
+push this 1
 push constant 1
 sub
+gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -81,6 +80,30 @@ return
 function String.setCharAt 0
 push argument 0
 pop pointer 0
+push argument 1
+push constant 0
+lt
+push argument 1
+push this 1
+push constant 1
+sub
+gt
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 16
+call Sys.error 1
+pop temp 0
+label IF_FALSE0
+push argument 1
+push this 0
+add
+push argument 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 0
 return
 function String.appendChar 0
@@ -113,6 +136,20 @@ return
 function String.eraseLastChar 0
 push argument 0
 pop pointer 0
+push this 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 18
+call Sys.error 1
+pop temp 0
+label IF_FALSE0
+push this 1
+push constant 1
+sub
+pop this 1
 push constant 0
 return
 function String.intValue 0
