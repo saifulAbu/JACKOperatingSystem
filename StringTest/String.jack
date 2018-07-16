@@ -11,6 +11,8 @@
  * string-oriented operations.
  */
 class String {
+		static int ASCII_ZERO;
+		static int ASCII_MINUS;
 		field Array content;
 		field int curLength;
 		field int maxLen;
@@ -25,7 +27,8 @@ class String {
 			if(maxLength = 0){
 				let maxLength = 1;
 			}
-
+			let ASCII_ZERO = 48;
+			let ASCII_MINUS = 45;
 			let content = Array.new(maxLength);
 			let maxLen = maxLength;
 			let curLength = 0;
@@ -86,13 +89,47 @@ class String {
     /** Returns the integer value of this string, 
      *  until a non-digit character is detected. */
     method int intValue() {
-    	//todo
-			return 0;
+    	var int value, i, firstChar;
+			let value = 0;
+			let i = 0;
+      if(content[0] = ASCII_MINUS){
+				let i = 1;
+				let sign = -1;
+			}
+			while(i < curLength){
+				let value = (value * 10) + (String.asciiToInt(content[i]));
+				let i = i + 1;
+			}
+
+			return (value * sign);
 		}
 
     /** Sets this string to hold a representation of the given value. */
     method void setInt(int val) {
-    	//todo
+			var int strLen;
+			let strLen = String.digitCount(Math.abs(val));
+			if(val < 0){
+				let strLen = (strLen + 1);
+				let val = Math.abs(val);
+			}
+			let curLength = 0;
+			do content.dispose();
+			let content = Array.new(strLen);
+			if(val < 0){
+				do appendChar(ASCII_MINUS);
+			}
+			do setIntHelper(val);
+			return;
+		}
+
+		method void setIntHelper(int val){
+			var int lastDigit, remainingVal;
+			let lastDigit = String.mod(val, 10);
+			let remainingVal = (val / 10);
+			if((remainingVal) > 10){
+				do setIntHelper(remainingVal / 10);
+			}
+			do appendChar(String.intToAscii(lastDigit));
 			return;
 		}
 
@@ -111,7 +148,7 @@ class String {
 			return 34;
 		}
 
-		function int getDigitCount(int val){
+		function int digitCount(int val){
 			var int result;
 			let result = 1;
 			while(val > 1){
@@ -119,5 +156,17 @@ class String {
 				let result = (result + 1);
 			}
 			return result;
+		}
+
+		function int asciiToInt(int charVal){
+			return (charVal - ASCII_ZERO);
+		}
+
+		function int intToAscii(int intVal){
+			return (ASCII_ZERO + intVal);
+		}
+
+		function int mod(int dividend, int divider){
+			return (dividend - (divider * (dividend / divider)));
 		}
 }
