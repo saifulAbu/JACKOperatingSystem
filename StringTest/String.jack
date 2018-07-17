@@ -110,7 +110,6 @@ class String {
 			let strLen = String.digitCount(Math.abs(val));
 			if(val < 0){
 				let strLen = (strLen + 1);
-				let val = Math.abs(val);
 			}
 			
 			let curLength = 0;
@@ -118,6 +117,7 @@ class String {
 			let content = Array.new(strLen);
 			if(val < 0){
 				do appendChar(ASCII_MINUS);
+				let val = Math.abs(val);
 			}
 			do setIntHelper(val);
 			return;

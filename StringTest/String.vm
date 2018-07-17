@@ -223,9 +223,6 @@ push local 0
 push constant 1
 add
 pop local 0
-push argument 1
-call Math.abs 1
-pop argument 1
 label IF_FALSE0
 push constant 0
 pop this 1
@@ -245,6 +242,9 @@ push pointer 0
 push static 1
 call String.appendChar 2
 pop temp 0
+push argument 1
+call Math.abs 1
+pop argument 1
 label IF_FALSE1
 push pointer 0
 push argument 1

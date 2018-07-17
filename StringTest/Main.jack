@@ -7,7 +7,7 @@
 class Main {
 
     /** Performs various string manipulations and displays their results. */
-    function void main2() {
+    function void main() {
         var String s;
         var String i;
         
@@ -81,7 +81,7 @@ class Main {
         return;
     }
 
-		function void main(){
+		function void main1(){
 			  var String s;
         var String i;
         
