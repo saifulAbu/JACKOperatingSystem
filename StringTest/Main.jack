@@ -89,10 +89,15 @@ class Main {
         do s.dispose();
 
         let s = String.new(6); // capacity 6, make sure that length 5 is displayed
+       // let s = s.appendChar(45);
+       // let s = s.appendChar(50);
+       // let s = s.appendChar(51);
+       // let s = s.appendChar(52);
+       // let s = s.appendChar(53);
         do Output.printString("new,appendChar: ");
-				do s.setInt(123);
+				do s.setInt(9870);
         do Output.printString(s);                // new, appendChar: abcde
-				//do Output.printInt(s.intValue());
+			//	do Output.printInt(s.intValue());
 				do Output.println();
 				return;
 		}

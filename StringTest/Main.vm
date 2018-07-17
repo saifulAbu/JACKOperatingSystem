@@ -514,7 +514,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push local 0
-push constant 123
+push constant 9870
 call String.setInt 2
 pop temp 0
 push local 0

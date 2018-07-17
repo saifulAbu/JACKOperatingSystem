@@ -108,10 +108,13 @@ class String {
     method void setInt(int val) {
 			var int strLen;
 			let strLen = String.digitCount(Math.abs(val));
-			if(val < 0){
+			do Output.printInt(strLen);
+			do Output.println();
+			/*if(val < 0){
 				let strLen = (strLen + 1);
 				let val = Math.abs(val);
 			}
+			*/
 			let curLength = 0;
 			do content.dispose();
 			let content = Array.new(strLen);
@@ -150,8 +153,12 @@ class String {
 
 		function int digitCount(int val){
 			var int result;
-			let result = 1;
-			while(val > 1){
+			if(val = 0){
+				return 1;
+			}
+
+			let result = 0;
+			while(val > 0){
 				let val = (val / 10);
 				let result = (result + 1);
 			}
