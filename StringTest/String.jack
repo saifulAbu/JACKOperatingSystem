@@ -108,13 +108,11 @@ class String {
     method void setInt(int val) {
 			var int strLen;
 			let strLen = String.digitCount(Math.abs(val));
-			do Output.printInt(strLen);
-			do Output.println();
-			/*if(val < 0){
+			if(val < 0){
 				let strLen = (strLen + 1);
 				let val = Math.abs(val);
 			}
-			*/
+			
 			let curLength = 0;
 			do content.dispose();
 			let content = Array.new(strLen);
@@ -129,8 +127,8 @@ class String {
 			var int lastDigit, remainingVal;
 			let lastDigit = String.mod(val, 10);
 			let remainingVal = (val / 10);
-			if((remainingVal) > 10){
-				do setIntHelper(remainingVal / 10);
+			if((remainingVal) > 0){
+				do setIntHelper(remainingVal);
 			}
 			do appendChar(String.intToAscii(lastDigit));
 			return;

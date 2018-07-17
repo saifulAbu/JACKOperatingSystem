@@ -95,7 +95,7 @@ class Main {
        // let s = s.appendChar(52);
        // let s = s.appendChar(53);
         do Output.printString("new,appendChar: ");
-				do s.setInt(9870);
+				do s.setInt(-1230);
         do Output.printString(s);                // new, appendChar: abcde
 			//	do Output.printInt(s.intValue());
 				do Output.println();
