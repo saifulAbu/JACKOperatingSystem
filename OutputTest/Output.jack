@@ -18,11 +18,13 @@ class Output {
 
     // Character map for displaying characters
     static Array charMaps; 
+		static int line; // 0 <= line <= 22
+		static int column; // 0 <= column <= 63
 
     /** Initializes the screen, and locates the cursor at the screen's top-left. */
     function void init() {
    		//todo
-			do initMap();
+			do Output.initMap();
 			return;
 	 	}
 
