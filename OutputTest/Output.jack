@@ -23,9 +23,8 @@ class Output {
 
     /** Initializes the screen, and locates the cursor at the screen's top-left. */
     function void init() {
-   		//todo
-			do Output.initMap();
-			return;
+				do Output.initMap();
+				return;
 	 	}
 
     // Initializes the character map array
@@ -190,6 +189,26 @@ class Output {
      *  and advances the cursor one column forward. */
     function void printChar(char c) {
     	//todo 
+			var Array charMap;
+			var int row, col, bitMapLine, x, y;
+			
+			let start_x = Output.line * 11;
+			let start_y = Output.column * 8;
+
+			let charMap = Output.getMap(c);
+			while(row < 12){
+				let rowBitMap = charMap[row];
+				while(col < 8){
+					let x = start_x + row;
+					let y = start_y + col;
+					let bit = getBit(rowBitMap, col);
+
+					do Output.drawBit(x, y, bit);
+					
+					let col = col + 1;
+				}
+				do row = row + 1;
+			}
 			return;
 		}
 
