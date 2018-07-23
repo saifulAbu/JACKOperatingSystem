@@ -190,25 +190,42 @@ class Output {
     function void printChar(char c) {
     	//todo 
 			var Array charMap;
-			var int row, col, bitMapLine, x, y;
+			var int row, col, bitMapLine, x, y, start_x, start_y, rowBitMap, bit;
 			
-			let start_x = Output.line * 11;
-			let start_y = Output.column * 8;
+			let row = 0;
+			let col = 0;
+			let start_x = line * 11;
+			let start_y = column * 8;
 
 			let charMap = Output.getMap(c);
-			while(row < 12){
+			
+			while(col < 8){
 				let rowBitMap = charMap[row];
-				while(col < 8){
-					let x = start_x + row;
-					let y = start_y + col;
-					let bit = getBit(rowBitMap, col);
-
-					do Output.drawBit(x, y, bit);
-					
-					let col = col + 1;
+				while(row < 12){
+					let x = col;
+					let y = row;
+					let bit = Output.getBit(rowBitMap, col);
+					do Output.drawPixel(x, y, bit);	
+					let row = row + 1;
 				}
-				do row = row + 1;
+				let col = col + 1;
 			}
+			return;
+		}
+
+		function int getBit(int value, int position){
+			//to do
+			return 1;
+		}
+
+		function void drawPixel(int x, int y, int color){
+			if(color = 1){
+				do Screen.setColor(true);
+			}else{
+				do Screen.setColor(false);
+			}
+			do Screen.drawPixel(x, y);
+			 
 			return;
 		}
 

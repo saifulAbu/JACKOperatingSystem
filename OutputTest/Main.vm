@@ -1,4 +1,4 @@
-function Main.main 1
+function Main.main2 1
 push constant 1
 call String.new 1
 pop local 0
@@ -249,6 +249,48 @@ call Output.backSpace 0
 pop temp 0
 push constant 6789
 call Output.printInt 1
+pop temp 0
+push constant 0
+return
+function Main.main 0
+push constant 83
+call Output.printChar 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 4
+push constant 0
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 1
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 2
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 3
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 4
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 5
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 6
+call Screen.drawPixel 2
+pop temp 0
+push constant 4
+push constant 7
+call Screen.drawPixel 2
 pop temp 0
 push constant 0
 return

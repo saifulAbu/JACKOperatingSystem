@@ -8,7 +8,7 @@ class Main {
 
     /** Outputs the entire character set to the screen using all the
      *  methods of the Output class. */
-    function void main() {
+    function void main2() {
         var String s;
     
     	let s = String.new(1);
@@ -39,4 +39,18 @@ class Main {
         
         return;
     }
+
+		function void main(){
+			do Output.printChar(83);
+			do Screen.setColor(true);
+			do Screen.drawPixel(4, 0);
+			do Screen.drawPixel(4, 1);
+			do Screen.drawPixel(4, 2);
+			do Screen.drawPixel(4, 3);
+			do Screen.drawPixel(4, 4);
+			do Screen.drawPixel(4, 5);
+			do Screen.drawPixel(4, 6);
+			do Screen.drawPixel(4, 7);
+			return;
+		}
 }
