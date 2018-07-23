@@ -1,6 +1,37 @@
-function Output.init 0
+function Output.init 2
+push constant 0
+pop local 0
+push constant 1
+pop local 1
 call Output.initMap 0
 pop temp 0
+push constant 16
+call Array.new 1
+pop static 3
+label WHILE_EXP0
+push local 0
+push constant 16
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 3
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+push local 1
+push local 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
 push constant 0
 return
 function Output.initMap 1
@@ -1495,8 +1526,8 @@ push argument 0
 call Output.getMap 1
 pop local 0
 label WHILE_EXP0
-push local 2
-push constant 8
+push local 1
+push constant 12
 lt
 not
 if-goto WHILE_END0
@@ -1506,41 +1537,18 @@ add
 pop pointer 1
 push that 0
 pop local 8
-label WHILE_EXP1
 push local 1
-push constant 12
-lt
-not
-if-goto WHILE_END1
-push local 2
-pop local 4
-push local 1
-pop local 5
+push constant 0
 push local 8
-push local 2
-call Output.getBit 2
-pop local 9
-push local 4
-push local 5
-push local 9
-call Output.drawPixel 3
+call Output.drawRow 3
 pop temp 0
 push local 1
 push constant 1
 add
 pop local 1
-goto WHILE_EXP1
-label WHILE_END1
-push local 2
-push constant 1
-add
-pop local 2
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
-return
-function Output.getBit 0
-push constant 1
 return
 function Output.drawPixel 0
 push argument 2
@@ -1565,6 +1573,61 @@ call Screen.drawPixel 2
 pop temp 0
 push constant 0
 return
+function Output.drawRow 5
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push local 0
+add
+pop local 1
+push argument 0
+pop local 2
+push local 0
+push argument 2
+call Output.getBit 2
+pop local 4
+push local 0
+push argument 0
+push local 4
+call Output.drawPixel 3
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Output.getBit 1
+push argument 0
+push static 3
+add
+pop pointer 1
+push that 0
+push argument 1
+and
+pop local 0
+push local 0
+push constant 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+return
+goto IF_END0
+label IF_FALSE0
+push constant 0
+return
+label IF_END0
 function Output.printString 0
 push constant 0
 return

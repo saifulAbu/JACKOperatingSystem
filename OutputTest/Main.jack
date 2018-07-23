@@ -41,16 +41,27 @@ class Main {
     }
 
 		function void main(){
+			var int x, y;
+			
 			do Output.printChar(83);
+			
 			do Screen.setColor(true);
-			do Screen.drawPixel(4, 0);
-			do Screen.drawPixel(4, 1);
-			do Screen.drawPixel(4, 2);
-			do Screen.drawPixel(4, 3);
-			do Screen.drawPixel(4, 4);
-			do Screen.drawPixel(4, 5);
-			do Screen.drawPixel(4, 6);
-			do Screen.drawPixel(4, 7);
+			do Screen.drawPixel(0, 0);
+			do Screen.drawPixel(1, 0);
+			do Screen.drawPixel(0, 1);
+			do Screen.drawPixel(1, 1);
+			let x = 0;
+			let y = 0;
+
+			while(x < 512){
+				while(y < 10){
+					do Screen.setColor(true);
+					do Screen.drawPixel(x, y);
+					let y = y + 1;
+				}
+				let x = x + 10;
+			}
+
 			return;
 		}
 }

@@ -20,10 +20,23 @@ class Output {
     static Array charMaps; 
 		static int line; // 0 <= line <= 22
 		static int column; // 0 <= column <= 63
+		
+		static Array powerOf2;
 
     /** Initializes the screen, and locates the cursor at the screen's top-left. */
     function void init() {
+        var int i, val;
+
+			  let i = 0;
+			  let val = 1;
 				do Output.initMap();
+				
+				let powerOf2 = Array.new(16);
+			  while(i < 16){
+				  let powerOf2[i] = val;
+				  let i = i + 1;
+				  let val = val + val;
+			  }
 				return;
 	 	}
 
@@ -199,23 +212,12 @@ class Output {
 
 			let charMap = Output.getMap(c);
 			
-			while(col < 8){
+			while(row < 12){
 				let rowBitMap = charMap[row];
-				while(row < 12){
-					let x = col;
-					let y = row;
-					let bit = Output.getBit(rowBitMap, col);
-					do Output.drawPixel(x, y, bit);	
-					let row = row + 1;
-				}
-				let col = col + 1;
+				do Output.drawRow(row, 0, rowBitMap);
+				let row = row + 1;
 			}
 			return;
-		}
-
-		function int getBit(int value, int position){
-			//to do
-			return 1;
 		}
 
 		function void drawPixel(int x, int y, int color){
@@ -227,6 +229,30 @@ class Output {
 			do Screen.drawPixel(x, y);
 			 
 			return;
+		}
+
+		function void drawRow(int row, int begin_column, int rowBitMap){
+			var int col, x, y, rowBitMap, bit;
+			let col = 0;
+			while(col < 8){
+					let x = begin_column + col;
+					let y = row;
+					let bit = Output.getBit(col, rowBitMap);
+					do Output.drawPixel(col, row, bit);	
+					let col = col + 1;
+			}
+			
+			return;
+		}
+		
+		function int getBit(int position, int value){
+			var int bit;
+			let bit = powerOf2[position] & value;
+			if(~(bit = 0)){
+				return 1;
+			}else{
+				return 0;
+			}
 		}
 
     /** displays the given string starting at the cursor location,
