@@ -8,11 +8,11 @@ class Main {
 
     /** Outputs the entire character set to the screen using all the
      *  methods of the Output class. */
-    function void main2() {
+    function void main() {
         var String s;
     
-    	let s = String.new(1);
-    	do s.appendChar(String.doubleQuote());
+    		let s = String.new(1);
+    		do s.appendChar(String.doubleQuote());
     
         do Output.moveCursor(0, 63);
         do Output.printChar(66);
@@ -40,28 +40,13 @@ class Main {
         return;
     }
 
-		function void main(){
+		function void main2(){
 			var int x, y;
 			
-			do Output.printChar(83);
+			do Output.printString("Buddha");
+			do Output.println();
+			do Output.printInt(1234);
 			
-			do Screen.setColor(true);
-			do Screen.drawPixel(0, 0);
-			do Screen.drawPixel(1, 0);
-			do Screen.drawPixel(0, 1);
-			do Screen.drawPixel(1, 1);
-			let x = 0;
-			let y = 0;
-
-			while(x < 512){
-				while(y < 10){
-					do Screen.setColor(true);
-					do Screen.drawPixel(x, y);
-					let y = y + 1;
-				}
-				let x = x + 10;
-			}
-
 			return;
 		}
 }
