@@ -35,7 +35,7 @@ class Keyboard {
      * F1 - F12 = 141 - 152
      */
     function char keyPressed() {
-    	//todo
+    	//todo test
 			return 0;
 		}
 
