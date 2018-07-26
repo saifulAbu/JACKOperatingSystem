@@ -7,10 +7,12 @@
  * A library for handling user input from the keyboard.
  */
 class Keyboard {
+		static int KEYBOARD_MEMORY_MAP;
 
     /** Initializes the keyboard. */
     function void init() {
     	//todo
+			let KEYBOARD_MEMORY_MAP = 24576;
 			return;
 		} 
 
@@ -35,8 +37,7 @@ class Keyboard {
      * F1 - F12 = 141 - 152
      */
     function char keyPressed() {
-    	//todo test
-			return 0;
+			return Memory.peek(KEYBOARD_MEMORY_MAP);
 		}
 
     /**								
@@ -45,8 +46,20 @@ class Keyboard {
      * of the pressed key.
      */
     function char readChar() {
-    	//todo
-			return 0;
+			var char c, key;
+    	var boolean ok;
+    
+      while (key = 0) {
+      	let key = Keyboard.keyPressed();
+      }	
+			let c = key;
+   		while (~(key = 0)) {
+      	let key = Keyboard.keyPressed();
+      }
+        
+	    do Output.printChar(c);
+	
+			return c;
 		}
 
     /**								
