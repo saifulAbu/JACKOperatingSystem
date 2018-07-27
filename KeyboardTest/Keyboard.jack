@@ -8,11 +8,13 @@
  */
 class Keyboard {
 		static int KEYBOARD_MEMORY_MAP;
-
+		static int MAX_INPUT_STRING_LENGTH;
     /** Initializes the keyboard. */
     function void init() {
     	//todo
 			let KEYBOARD_MEMORY_MAP = 24576;
+			let MAX_INPUT_STRING_LENGTH = 52;
+
 			return;
 		} 
 
@@ -69,7 +71,23 @@ class Keyboard {
      */
     function String readLine(String message) {
     	//todo
-			return 0;
+			var String input;
+			var char key;
+
+			do Output.printString(message);
+			let input = String.new(MAX_INPUT_STRING_LENGTH);
+
+			let key = Keyboard.readChar();
+			while(~(key = 128)){
+				if(key = 129){
+					do input.eraseLastChar();
+				}else{
+					do input.appendChar(key);
+				}
+				let key = Keyboard.readChar();
+			}
+
+			return input;
 		}   
 
     /**								
