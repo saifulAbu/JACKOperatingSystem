@@ -3,6 +3,8 @@ push constant 24576
 pop static 0
 push constant 52
 pop static 1
+push constant 45
+pop static 2
 push constant 0
 return
 function Keyboard.keyPressed 0
@@ -76,6 +78,83 @@ goto WHILE_EXP0
 label WHILE_END0
 push local 0
 return
-function Keyboard.readInt 0
+function Keyboard.readInt 4
 push constant 0
+pop local 2
+push constant 1
+pop local 0
+push constant 0
+pop local 1
+push argument 0
+call Keyboard.readLine 1
+pop local 3
+push local 3
+call Keyboard.extractNumber 1
+return
+function Keyboard.extractNumber 4
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+push constant 1
+pop local 2
+push argument 0
+push constant 0
+call String.charAt 2
+push static 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+neg
+pop local 2
+push constant 1
+pop local 1
+label IF_FALSE0
+label WHILE_EXP0
+push local 1
+push argument 0
+call String.length 1
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push local 1
+call String.charAt 2
+pop local 3
+push local 3
+push constant 47
+gt
+push local 3
+push constant 58
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 10
+call Math.multiply 2
+push local 3
+push constant 48
+sub
+add
+pop local 0
+goto IF_END1
+label IF_FALSE1
+push local 0
+push local 2
+call Math.multiply 2
+return
+label IF_END1
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+push local 2
+call Math.multiply 2
 return
