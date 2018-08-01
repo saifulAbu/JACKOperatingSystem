@@ -10,13 +10,17 @@
  */ 
 class Memory {
 		static int HEAP_BASE;
-		static int HEAP_LEN;
+		static int HEAP_MAX_SIZE;
+		static Array freeList;
 
     /** Initializes the class. */
     function void init() {
     	//todo
-
-			//let HEAP_BASE = ;
+			let HEAP_BASE = 2048;
+			let HEAP_MAX_SIZE = 14336;
+			let freeList = HEAP_BASE;
+			let freeList[0] = HEAP_MAX_SIZE; //freeList.size = max_heap
+			let freeList[1] = null; //freeList.next = null
 			return;
 		}
 
@@ -39,13 +43,34 @@ class Memory {
      *  a reference to its base address. */
     function int alloc(int size) {
     	//todo
+			var Array allocatedSegment;
+
+			if((size < 0) | (size = 0)){
+				do Sys.error(5);
+			}
+	
+			let allocatedSegment = Memory.getFirstFit(size);
+			if(allocatedSegment = null){
+				do Sys.error(6);
+			}
+			return allocatedSegment;
+		}
+
+		function int getFirstFit(int size){
 			return 0;
 		}
 
     /** De-allocates the given object (cast as an array) by making
      *  it available for future allocations. */
     function void deAlloc(Array o) {
-    	//todo
+			var Array segment;
+			let segment = o - 1;
+			if(freeList = null){
+				let freeList = segment;
+			}else{
+				let segment[1] = freeList[1]; //segment.next = freeList.next
+				let freeList = segment;
+			}
 			return;
 		}    
 }
