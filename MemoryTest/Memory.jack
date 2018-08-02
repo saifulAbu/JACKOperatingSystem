@@ -57,6 +57,27 @@ class Memory {
 		}
 
 		function int getFirstFit(int size){
+			/*
+			curblock = freeList
+			while(curblock != null){
+				sizeBlock = getSize(curBlock)
+				if(sizeBlock > size){
+					returnBlock = fragment(curBlock, size)
+					return returnBlock
+				}
+			}
+			return null
+			*/
+			return 0;
+		}
+
+		function int getSize(Array block){
+			//todo
+			return 0;
+		}
+
+		function int fragmentBlock(Array block, int fragmentSize){
+			//todo
 			return 0;
 		}
 

@@ -78,6 +78,12 @@ return
 function Memory.getFirstFit 0
 push constant 0
 return
+function Memory.getSize 0
+push constant 0
+return
+function Memory.fragmentBlock 0
+push constant 0
+return
 function Memory.deAlloc 1
 push argument 0
 push constant 1
