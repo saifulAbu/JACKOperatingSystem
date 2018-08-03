@@ -61,24 +61,52 @@ class Memory {
 			curblock = freeList
 			while(curblock != null){
 				sizeBlock = getSize(curBlock)
-				if(sizeBlock > size){
+				if(sizeBlock > Memory.minSize(size)){
 					returnBlock = fragment(curBlock, size)
 					return returnBlock
 				}
+				curBlock = nextBlock(curBlock)
 			}
 			return null
 			*/
-			return 0;
+			var Array curBlock;
+
+			let curBlock = freeList;
+			while(~(curBlock = null)){
+				if(Memory.getSize(curBlock) > Memory.minSize(size)){
+					return Memory.fragmentBlock(curBlock, size);		
+				}
+				let curBlock = Memory.nextBlock(curBlock);
+			}
+			return null;
+		}
+
+		function int minSize(int size){
+			return (size + 2);
 		}
 
 		function int getSize(Array block){
-			//todo
-			return 0;
+			if(block = null){
+				return 0;
+			}
+			return block[0];
+		}
+
+		function int nextBlock(Array block){
+			return block[1];
 		}
 
 		function int fragmentBlock(Array block, int fragmentSize){
 			//todo
-			return 0;
+			var int size;
+			var Array returnBlock;
+
+			let size = Memory.getSize(block);
+			let returnBlock = block + size - fragmentSize;
+
+			let block[0] = size - (fragmentSize + 1);
+			let returnBlock[0] = (fragmentSize + 1);
+			return returnBlock;
 		}
 
     /** De-allocates the given object (cast as an array) by making
