@@ -194,8 +194,14 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push constant 1
+push static 2
+add
 push local 0
-pop static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 label IF_END0
 push constant 0
 return

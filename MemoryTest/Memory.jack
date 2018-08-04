@@ -118,7 +118,7 @@ class Memory {
 				let freeList = segment;
 			}else{
 				let segment[1] = freeList[1]; //segment.next = freeList.next
-				let freeList = segment;
+				let freeList[1] = segment; //freeList.next = segment
 			}
 			return;
 		}    
