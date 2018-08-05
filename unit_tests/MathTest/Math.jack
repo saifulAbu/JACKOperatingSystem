@@ -1,0 +1,170 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Math.jack
+
+/**
+ * A library of commonly used mathematical functions.
+ * Note: Jack compilers implement multiplication and division using OS method calls.
+ */
+class Math {
+		static Array powerOf2;
+
+    /** Initializes the library. */
+    function void init() {
+			var int i;
+			var int val;
+
+			let i = 0;
+			let val = 1;
+			let powerOf2 = Array.new(16);
+			while(i < 16){
+				let powerOf2[i] = val;
+				let i = i + 1;
+				let val = val + val;
+			}
+    	return;
+		}
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+   		var int res;
+			let res = x;
+			if(x < 0){
+				let res = Math.multiply(res, -1);
+			}
+			return res;
+	  }
+
+    /** Returns the product of x and y. 
+     *  When a Jack compiler detects the multiplication operator '*' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x*y and multiply(x,y) return the same value.
+     */
+    function int multiply(int x, int y) {
+			var int shiftedX, result, n, i;
+			let shiftedX = x;
+			let result = 0;
+			let n = Math.getBitCount(y);
+			let i = 0;
+
+			while(i < n){
+				if(Math.getBit(y, i) = 1){
+					let result = result + shiftedX;
+				}
+				let shiftedX = shiftedX + shiftedX;
+				let i = i + 1;
+			}
+
+			return result;
+		}
+
+		function int getBitCount(int x) {
+			var int i, temp, bit;
+			let i = 15;
+			while(i > 0){
+				let bit = (powerOf2[i] & x); 
+				if(~(bit = 0)) {
+					return (i + 1);
+				}
+				let i = i - 1;
+			}
+			return 1;
+		}
+
+		function int getBit(int x, int i){
+			var int bit;
+			let bit = powerOf2[i] & x;
+			if(~(bit = 0)){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+
+    /** Returns the integer part of x/y.
+     *  When a Jack compiler detects the multiplication operator '/' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x/y and divide(x,y) return the same value.
+     */
+		function int divide(int x, int y){
+			var int sign, result;
+			let sign = 1;
+			if(x < 0){
+				let sign = -1;
+				let x = Math.abs(x);
+			}
+			if(y < 0){
+				let sign = Math.multiply(sign, -1);
+				let y = Math.abs(y);
+			}
+			let result = Math.divideHelper(x, y);
+			return (Math.multiply(result, sign));
+		}
+
+    function int divideHelper(int x, int y) {
+    	var int q;
+			if(y > x){
+				return 0;
+			}
+			let q = Math.divideHelper(x, (y + y));
+			if((x - Math.multiply(Math.multiply(q, y), 2)) < y){
+				return Math.multiply(2, q);
+			}
+			return (Math.multiply(2, q) + 1);
+		}
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x) {
+    	//compute the integer part of y = sqrt(x) strategy
+			//find an integer y such that y * y <= x <= (y+1) * (y+1) for (0 <= x < (2^n))
+			//by performing binary search in the range 0... (2 ^ (n/2) - 1)
+			//y = 0
+			//for j = n/2 -1 ... 0 do
+			//  if (y + 2^ j) ^ 2 <= x then y = y + 2 ^ j
+			//return y
+			var int n, y, j, t;
+			
+			let n = Math.getBitCount(x);
+			let y = 0;
+			let j = Math.divideBy2thenCeil(n) - 1;
+			while(j > -1){
+				let t = Math.multiply((y + powerOf2[j]), (y + powerOf2[j]));
+				if((t < x) | (t = x)){
+					let y = y + powerOf2[j];
+				}
+				let j = j - 1;
+			}
+			
+			return y;
+		}
+
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+    	var int res;
+			let res = a;
+			if(b > a){
+				let res = b;
+			}
+			return res;
+		}
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+    	var int res;
+			let res = a;
+			if(b < a){
+				let res = b;
+			}
+			return res;
+		}
+
+		function int divideBy2thenCeil(int x){
+			var int t;
+			let t = Math.divide(x, 2);
+			if((t + t) < x){
+				return t + 1;
+			}
+			return t;
+		}
+}
