@@ -1,0 +1,122 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+		static int HEAP_BASE;
+		static int HEAP_MAX_SIZE;
+		static Array freeList;
+
+    /** Initializes the class. */
+    function void init() {
+			let HEAP_BASE = 2048;
+			let HEAP_MAX_SIZE = 14336;
+			let freeList = HEAP_BASE;
+			let freeList[0] = HEAP_MAX_SIZE; //freeList.size = max_heap
+			let freeList[1] = null; //freeList.next = null
+			return;
+		}
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+			var Array memory;
+			let memory = 0;
+			return memory[address];
+		}
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+    	var Array memory;
+			let memory = 0;
+			let memory[address] = value;
+			return;
+		}
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+			var Array allocatedSegment;
+
+			if((size < 0) | (size = 0)){
+				do Sys.error(5);
+			}
+	
+			let allocatedSegment = Memory.getFirstFit(size);
+			if(allocatedSegment = null){
+				do Sys.error(6);
+			}
+			return allocatedSegment;
+		}
+
+		function int getFirstFit(int size){
+			/*
+			curblock = freeList
+			while(curblock != null){
+				sizeBlock = getSize(curBlock)
+				if(sizeBlock > Memory.minSize(size)){
+					returnBlock = fragment(curBlock, size)
+					return returnBlock
+				}
+				curBlock = nextBlock(curBlock)
+			}
+			return null
+			*/
+			var Array curBlock;
+
+			let curBlock = freeList;
+			while(~(curBlock = null)){
+				if(Memory.getSize(curBlock) > Memory.minSize(size)){
+					return Memory.fragmentBlock(curBlock, size);		
+				}
+				let curBlock = Memory.nextBlock(curBlock);
+			}
+			return null;
+		}
+
+		function int minSize(int size){
+			return (size + 2);
+		}
+
+		function int getSize(Array block){
+			if(block = null){
+				return 0;
+			}
+			return block[0];
+		}
+
+		function int nextBlock(Array block){
+			return block[1];
+		}
+
+		function int fragmentBlock(Array block, int fragmentSize){
+			var int size;
+			var Array returnBlock;
+
+			let size = Memory.getSize(block);
+			let returnBlock = block + size - fragmentSize;
+
+			let block[0] = size - (fragmentSize + 1);
+			let returnBlock[0] = (fragmentSize + 1);
+			return returnBlock;
+		}
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+			var Array segment;
+			let segment = o - 1;
+			if(freeList = null){
+				let freeList = segment;
+			}else{
+				let segment[1] = freeList[1]; //segment.next = freeList.next
+				let freeList[1] = segment; //freeList.next = segment
+			}
+			return;
+		}    
+}
