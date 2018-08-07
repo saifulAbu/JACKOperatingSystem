@@ -29,9 +29,11 @@ jackvm
 * As the virual machine emulator opens, load the Pong directory. Choose no animation, hit the run button.
 
 Here is an example of some graphics output created using the OS
-[A House](https://github.com/saifulAbu/JACKOperatingSystem/blob/master/drawa_screen.png)
-[Pong Game](https://github.com/saifulAbu/JACKOperatingSystem/blob/master/first_game_play.png)
+![A House](https://github.com/saifulAbu/JACKOperatingSystem/blob/master/drawa_screen.png)
+Image of a house rendered using the OS
 
+![Pong Game](https://github.com/saifulAbu/JACKOperatingSystem/blob/master/first_game_play.png)
+Screenshot of the Pong game created using the JACK OS API
 
 References
 0. https://docs.wixstatic.com/ugd/44046b_695a82ff2d974bd5b3b2642aa42ac4e8.pdf
