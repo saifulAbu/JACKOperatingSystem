@@ -23,9 +23,11 @@ Then run `source ~/.bashrc`
 
 * Write a application program using the JACK OS API specied in [0]. An example application program is provided in the Pong directory.
 * Copy codes of the OS into the Pong directory.
-* cd to Pong directory. run the command 
+* cd to Pong directory. run the commands 
+```
 jackc
 jackvm
+```
 * As the virual machine emulator opens, load the Pong directory. Choose no animation, hit the run button.
 
 Here is an example of some graphics output created using the OS
