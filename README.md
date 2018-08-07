@@ -35,7 +35,7 @@ Image of a house rendered using the OS <br/>
 ![Pong Game](https://github.com/saifulAbu/JACKOperatingSystem/blob/master/first_game_play.png) <br/>
 Screenshot of the Pong game created using the JACK OS API <br/>
 
-References <br/>
+## References
 0. https://docs.wixstatic.com/ugd/44046b_695a82ff2d974bd5b3b2642aa42ac4e8.pdf
 1. https://www.nand2tetris.org
 2. https://github.com/saifulAbu/JACKOperatingSystem/tree/master/tools
